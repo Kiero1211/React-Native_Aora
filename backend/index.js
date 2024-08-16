@@ -2,13 +2,13 @@ import path from "path";
 import dotenv from "dotenv";
 import express from "express";
 import cookieParser from "cookie-parser";
+dotenv.config();
 
 // Utils
 import connectDB from "./config/db.js"
-import routes from "./routes/index.js";
+// import routes from "./routes/index.js";
 
 // Initialize
-dotenv.config();
 const port = process.env.PORT || 5000;
 const app = express();
 const __dirname = path.resolve();
@@ -35,6 +35,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(routes);
+// app.use(routes);
 
 app.listen(port, () => console.log(`Server running on port: http://localhost:${port}`));
