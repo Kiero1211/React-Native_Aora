@@ -1,7 +1,7 @@
-import { Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import React from 'react'
 
-interface CustomButtonProps {
+interface CustomButtonProps extends TouchableOpacityProps{
     title: string;
     handlePress?: () => void;
     textStyles?: string;
@@ -14,13 +14,16 @@ const CustomButton = ({
     handlePress,
     textStyles,
     containerStyles,
-    isLoading
+    isLoading,
+    children,
+    ...props
 }: CustomButtonProps) => {
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
+        {...props} 
         className={
             `
-                bg-secondary-200 rounded-xl min-h-[62px] justify-center items-center p-3 
+                bg-secondary-200 rounded-xl min-h-[62px] flex-row justify-center items-center p-3 
                 ${containerStyles} 
                 ${isLoading ? "opacity-50" : ""}
             `
@@ -28,6 +31,7 @@ const CustomButton = ({
         onPress={handlePress}
     >
       <Text className={`text-xl font-semibold ${textStyles}`}>{title}</Text>
+      {children}
     </TouchableOpacity>
   )
 }

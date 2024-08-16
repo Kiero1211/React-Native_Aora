@@ -4,6 +4,12 @@
     "paths": {
       "@/*": [
         "app/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/constants/*": [
+        "constants/*"
       ]
     }
   },

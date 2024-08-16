@@ -1,11 +1,99 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+// Components
+import { 
+  View, 
+  Text, 
+  ScrollView, 
+  Image, 
+  ActivityIndicator,
+  Keyboard,
+} from 'react-native'
+import { SafeAreaView } from 'react-native'
+import FormField from '@/components/FormField'
+import CustomButton from '@/components/CustomButton'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+// Hooks
+import {useState} from 'react'
+
+// Utils 
+import images from "../../constants/images"
+import { ILoginForm, initialLoginFormState } from '@/constants/auth'
+import { Link } from 'expo-router'
 
 const SignIn = () => {
+  const [formState, setFormState] = useState<ILoginForm>(initialLoginFormState);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSubmit = async () => {
+    try {
+      setIsLoading(true);
+      console.log("Submitting...");
+      setTimeout(() => {
+        console.log("Credentials", formState);
+        setIsLoading(false);
+      }, 2000)
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
-    <View>
-      <Text>SignIn</Text>
-    </View>
+    <SafeAreaView className="bg-primary h-full">
+      <KeyboardAwareScrollView>
+        <ScrollView 
+          className="pb-10" 
+          keyboardShouldPersistTaps="always" 
+          keyboardDismissMode="none"
+        >
+          <View className="w-full justify-center px-4 my-6">
+            <Image 
+              source={images.logo}
+              className="w-[115px] h-[50px]"
+              resizeMode="contain"
+            />
+
+            <Text className="text-white text-2xl text-semibold mt-6 font-psemibold">
+              Log in to Aora
+            </Text>
+
+            {/* Email */}
+            <FormField
+              title="Email"
+              value={formState.email}
+              handleChangeText={(input) => setFormState({ ...formState, email: input })}
+              customStyles="mt-7"
+              keyboardType="email-address"
+            />
+
+            {/* Password */}
+            <FormField
+              title="Password"
+              value={formState.password}
+              handleChangeText={(input) => setFormState({ ...formState, password: input })}
+              customStyles="mt-7"
+              keyboardType="visible-password"
+            />
+
+            <CustomButton 
+              title="Sign in"
+              handlePress={handleSubmit}
+              containerStyles="w-full mt-7"
+              isLoading={isLoading}
+            >
+                <ActivityIndicator animating={isLoading} />
+            </CustomButton>
+
+            <View className="justify-center pt-5 flex-row gap-2">
+              <Text className="text-lg text-gray-100 font-pregular">
+                Don't have an account?
+              </Text>
+              <Link href="/sign-up" className="text-lg font-semibold text-secondary-200">
+                Sign Up
+              </Link>
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAwareScrollView>
+    </SafeAreaView>
   )
 }
 

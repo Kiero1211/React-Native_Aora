@@ -1,6 +1,5 @@
 import { Text, View, ScrollView, Image } from 'react-native';
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import {  router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from "../constants/images";
@@ -47,8 +46,6 @@ const App = () => {
             />
         </View>
       </ScrollView>
-
-      <StatusBar backgroundColor="#161622" style="light" />
     </SafeAreaView>
   )
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { SplashScreen, Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,10 +32,14 @@ const RootLayout = () => {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{headerShown: false}}/>
-      <Stack.Screen name="profile"/>
-    </Stack>
+    <>
+      <Stack>
+        <Stack.Screen name="index" options={{headerShown: false}}/>
+        <Stack.Screen name="(auth)" options={{headerShown: false}}/>
+      </Stack>
+      
+      <StatusBar backgroundColor="#161622" style="light" />
+    </>
   )
 }
 
