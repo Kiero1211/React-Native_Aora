@@ -1,9 +1,8 @@
-import User from "../models/User.js";
-import { asyncHandler } from "../middlewares/asyncHandler.js";
-import { hashPassword, comparePassword } from "../utils/hashPassword.js";
-import { log } from "console";
+const User = require("../models/User.js");
+const asyncHandler = require("../middlewares/asyncHandler.js");
+const { hashPassword, comparePassword } = require("../utils/hashPassword.js");
 
-export const createUser = asyncHandler(async (req, res) => {
+exports.createUser = asyncHandler(async (req, res) => {
     const {
         username,
         email,
@@ -32,4 +31,4 @@ export const createUser = asyncHandler(async (req, res) => {
     } catch (error) {
         throw new Error(error.message);
     }
-}) 
+});

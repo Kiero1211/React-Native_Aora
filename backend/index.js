@@ -1,18 +1,19 @@
-import path from "path";
-import dotenv from "dotenv";
-import express from "express";
-import cookieParser from "cookie-parser";
+const path = require("path");
+const dotenv = require("dotenv");
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const connectDB = require("./config/db.js");
+const routes = require("./routes/index.js");
+
 dotenv.config();
 
 // Utils
-import connectDB from "./config/db.js"
-import routes from "./routes/index.js";
 
 // Initialize
 const port = process.env.PORT || 5000;
 const app = express();
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname + "/uploads")))
+const dirname = path.resolve();
+app.use("/uploads", express.static(path.join(dirname + "/uploads")));
 
 connectDB();
 
@@ -31,7 +32,7 @@ app.use(function (req, res, next) {
             sameSite: "strict",
             ...options // merge with any options provided when 'cookie' was called
         });
-    }
+    };
     next();
 });
 
