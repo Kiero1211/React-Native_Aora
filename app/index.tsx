@@ -3,7 +3,8 @@ import React from 'react';
 import {  router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from "../constants/images";
-import CustomButton from 'components/CustomButton';
+import CustomButton from '../components/CustomButton';
+
 
 const App = () => {
   return (
@@ -34,7 +35,7 @@ const App = () => {
               resizeMode="contain"
             />
           </View>
-
+      
           <Text className="mt-7 text-lg text-center text-gray-100">
             Where Creativity Meets Innovation: Embark on a Journey of Limitless Exploration with Aora
           </Text>

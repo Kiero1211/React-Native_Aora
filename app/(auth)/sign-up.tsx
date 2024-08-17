@@ -10,7 +10,7 @@ import {useState} from 'react'
 
 // Utils 
 import images from "../../constants/images"
-import { ISignUpForm, initialSignUpFormState } from '@/constants/auth'
+import { ISignUpForm, initialSignUpFormState } from '../../constants/auth'
 import { Link } from 'expo-router'
 
 const SignIn = () => {

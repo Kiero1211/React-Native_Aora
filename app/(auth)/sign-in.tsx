@@ -8,8 +8,8 @@ import {
   Keyboard,
 } from 'react-native'
 import { SafeAreaView } from 'react-native'
-import FormField from '@/components/FormField'
-import CustomButton from '@/components/CustomButton'
+import FormField from '../../components/FormField'
+import CustomButton from '../../components/CustomButton'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 // Hooks
@@ -17,7 +17,7 @@ import {useState} from 'react'
 
 // Utils 
 import images from "../../constants/images"
-import { ILoginForm, initialLoginFormState } from '@/constants/auth'
+import { ILoginForm, initialLoginFormState } from '../../constants/auth'
 import { Link } from 'expo-router'
 
 const SignIn = () => {
