@@ -6,7 +6,7 @@ dotenv.config();
 
 // Utils
 import connectDB from "./config/db.js"
-// import routes from "./routes/index.js";
+import routes from "./routes/index.js";
 
 // Initialize
 const port = process.env.PORT || 5000;
@@ -35,6 +35,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-// app.use(routes);
+app.use(routes);
 
 app.listen(port, () => console.log(`Server running on port: http://localhost:${port}`));
